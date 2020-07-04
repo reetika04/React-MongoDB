@@ -1,0 +1,20 @@
+version: '2'
+services:
+  ui:
+    build: ./FrontEnd/react-frontend
+    image: ree/ui
+    ports:
+      - '8081:8081'
+    depends_on:
+      - api
+  api:
+    build: ./BackEnd/node-mongodb
+    image: ree/api
+    ports:
+      - '8080:8080'
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    ports:
+      - '27017:27017'

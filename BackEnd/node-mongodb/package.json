@@ -1,9 +1,10 @@
 {
   "name": "node-express-mongodb",
   "version": "1.0.0",
-  "description": "Node.js Restful CRUD API with Node.js, Express and MongoDB",
+  "description": "reetika",
   "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -13,7 +14,6 @@
     "api",
     "mongodb"
   ],
-  "description": "bezkoder",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",

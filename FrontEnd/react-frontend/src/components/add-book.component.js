@@ -14,7 +14,6 @@ export default class AddBook extends Component {
       title: "",
       description: "",
       published: false,
-
       submitted: false
     };
   }
@@ -37,21 +36,33 @@ export default class AddBook extends Component {
       description: this.state.description
     };
 
-    BookDataService.create(data)
-      .then(response => {
-        this.setState({
-          id: response.data.id,
-          title: response.data.title,
-          description: response.data.description,
-          published: response.data.published,
+    BookDataService.findByTitle(this.state.title).then(
+      response =>{
+        if(response.data.length===0){
+          BookDataService.create(data)
+            .then(response => {
+              this.setState({
+                id: response.data.id,
+                title: response.data.title,
+                description: response.data.description,
+                published: response.data.published,
 
-          submitted: true
-        });
-        console.log(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
+                submitted: true
+              });
+              console.log(response.data);
+            })
+            .catch(e => {
+              console.log(e);
+            });
+        }
+        else {
+          alert("The book already exists.");
+        }
+      }
+    )
+    .catch(e=>console.log(e));
+
+
   }
 
   newBook() {
@@ -106,6 +117,7 @@ export default class AddBook extends Component {
             <button onClick={this.saveBook} className="btn btn-success">
               Submit
             </button>
+
           </div>
         )}
       </div>

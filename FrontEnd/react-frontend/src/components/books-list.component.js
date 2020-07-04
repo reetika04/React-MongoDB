@@ -167,8 +167,7 @@ export default class BooksList extends Component {
             </div>
           ) : (
             <div>
-              <br />
-              <p>Please click on a Book...</p>
+            
             </div>
           )}
         </div>
